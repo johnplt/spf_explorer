@@ -1,0 +1,12 @@
+langchain
+langchain-core
+langchain-community 
+langchain-huggingface 
+faiss-cpu 
+pypdf 
+sentence-transformers
+flashrank
+rapidfuzz
+docling
+langchain-docling
+langchain-ollama
