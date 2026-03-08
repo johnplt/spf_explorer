@@ -14,7 +14,7 @@ def setup_ultimate_rag(pdf_path):
     docs = loader.load()
     
     # On utilise un découpeur récursif qui respecte le Markdown
-    # On veut des morceaux d'environ 1000 caractères pour avoir assez de contexte
+    # On veut des morceaux qui permettent d'avoir assez de contexte
     text_splitter = RecursiveCharacterTextSplitter(
         chunk_size=2000,
         chunk_overlap=400,
@@ -26,7 +26,6 @@ def setup_ultimate_rag(pdf_path):
     print(f"📦 Document découpé en {len(final_splits)} morceaux.")
     vectorstore = FAISS.from_documents(final_splits, embeddings)
     
-    # On cherche plus large (k=15) pour être SÛR que la varicelle soit dans le lot
     retriever = vectorstore.as_retriever(search_kwargs={"k": 15})
     
     compressor = FlashrankRerank()
